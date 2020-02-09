@@ -1,0 +1,112 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-todo-todo-204700-authRole",
+			"UnauthRoleArn": "arn:aws:iam::293897010966:role/amplify-todo-todo-204700-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::293897010966:role/amplify-todo-todo-204700-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "amplify-todo-todo-204700-deployment",
+			"UnauthRoleName": "amplify-todo-todo-204700-unauthRole",
+			"StackName": "amplify-todo-todo-204700",
+			"StackId": "arn:aws:cloudformation:us-west-2:293897010966:stack/amplify-todo-todo-204700/573fe8e0-4893-11ea-af4a-0a053a875a00",
+			"AmplifyAppId": "diwl2upzw53z9"
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-todo-204700-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2020-02-08T23:34:24.669Z",
+			"output": {
+				"S3BucketSecureURL": "https://todo-20200205205558-hostingbucket-todo.s3.amazonaws.com",
+				"WebsiteURL": "http://todo-20200205205558-hostingbucket-todo.s3-website-us-west-2.amazonaws.com",
+				"Region": "us-west-2",
+				"HostingBucketName": "todo-20200205205558-hostingbucket-todo"
+			},
+			"lastPushDirHash": "cXfZbeDjKLMUpdh4Z4KTr5rKqqs="
+		}
+	},
+	"auth": {
+		"todob9fbe8fd": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "todob9fbe8fdCustomMessage",
+					"triggerProvider": "Cognito",
+					"attributes": [
+						"Arn",
+						"Name"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-todo-204700-deployment/amplify-cfn-templates/auth/todob9fbe8fd-cloudformation-template.yml",
+				"logicalId": "authtodob9fbe8fd"
+			},
+			"lastPushTimeStamp": "2020-02-08T23:34:24.673Z",
+			"output": {
+				"AppClientSecret": "opqelp40dmcgh7r2t18edc8n7khtli3smcmtll7c1so1v19df8s",
+				"UserPoolId": "us-west-2_doMpaXJdS",
+				"AppClientIDWeb": "5livlb73pft18e5r011i8aumd6",
+				"AppClientID": "fg64ed8lr78k0no9b9pvnu22a",
+				"IdentityPoolId": "us-west-2:7a16d70f-4625-4324-8cc9-3e856ab4b093",
+				"IdentityPoolName": "todob9fbe8fd_identitypool_b9fbe8fd__todo",
+				"UserPoolName": "todob9fbe8fd_userpool_b9fbe8fd"
+			},
+			"lastPushDirHash": "KG3h4/BwReLRYmUuF7jEoVvpfq0="
+		}
+	},
+	"function": {
+		"todob9fbe8fdCustomMessage": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"lastBuildTimeStamp": "2020-02-07T08:29:41.326Z",
+			"lastPackageTimeStamp": "2020-02-07T08:29:41.438Z",
+			"distZipFilename": "todob9fbe8fdCustomMessage-457173497862722b6567-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-todo-204700-deployment/amplify-cfn-templates/function/todob9fbe8fdCustomMessage-cloudformation-template.json",
+				"logicalId": "functiontodob9fbe8fdCustomMessage"
+			},
+			"lastPushTimeStamp": "2020-02-08T23:34:24.674Z",
+			"output": {
+				"Region": "us-west-2",
+				"Arn": "arn:aws:lambda:us-west-2:293897010966:function:todob9fbe8fdCustomMessage-todo",
+				"Name": "todob9fbe8fdCustomMessage-todo",
+				"LambdaExecutionRole": "todob9fbe8fdCustomMessage-todo"
+			},
+			"lastPushDirHash": "B3SkpIgvvcQH7lWQWb+tE1GE27w="
+		}
+	},
+	"api": {
+		"todo": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authtodob9fbe8fd"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "z7ehu46tjrde5a4jiyq3y6llje",
+				"GraphQLAPIEndpointOutput": "https://63gqsrxtebfepd7lyjv3kkllzq.appsync-api.us-west-2.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-todo-204700-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apitodo"
+			},
+			"lastPushTimeStamp": "2020-02-08T23:34:26.764Z",
+			"lastPushDirHash": "viuhSy+5xjUDR/p7eYH3D6stQYQ="
+		}
+	}
+}
