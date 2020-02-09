@@ -20,12 +20,16 @@ function deleteTodo(todo){
 }
 
 function App() {
+
+  const userTodos = API.graphql(graphqlOperation(queries.listTodos,{filter:{'name':{'eq':"dherbsta"}}}));
+  console.log(userTodos);
+
   const allTodos = API.graphql(graphqlOperation(queries.listTodos));
   console.log(allTodos);
 
-  const oneTodo = API.graphql(graphqlOperation(queries.getTodo,{id:"74e559d7-ebe0-42ed-91f3-d582d7c381b5"})).then(function(todo){
-    // updateTodo(todo['data']['getTodo'],"new disco!!");
-    deleteTodo(todo['data']['getTodo']);
+  const oneTodo = API.graphql(graphqlOperation(queries.getTodo,{id:"1e1e2acf-a88c-4b4c-9cf7-ec388523fee8"})).then(function(todo){
+    updateTodo(todo['data']['getTodo'],"new disco!!!");
+    // deleteTodo(todo['data']['getTodo']);
   });
 
   console.log(oneTodo);
