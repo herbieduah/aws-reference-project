@@ -5,6 +5,7 @@ import {Auth, API, graphqlOperation} from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
 import * as queries from './graphql/queries';
+import * as mutations from  './graphql/mutations';
 Auth.configure(awsconfig);
 API.configure(awsconfig);
 
@@ -14,6 +15,16 @@ function App() {
 
   const oneTodo = API.graphql(graphqlOperation(queries.getTodo,{id:"74e559d7-ebe0-42ed-91f3-d582d7c381b5"}));
   console.log(oneTodo);
+
+  Auth.currentAuthenticatedUser({
+    bypassCache: false
+  }).then(function(user){
+    console.log("User: " + JSON.stringify(user));
+    const todo = {name: user['username'], description: "new todo"};
+    const newTodo = API.graphql(graphqlOperation(mutations.createTodo,{input: todo}));
+    console.log(newTodo);
+  }).catch(err => console.log(err));
+
   return (
     <div className="App">
       <header className="App-header">
